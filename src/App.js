@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import useHackerNewsApi from './hooks/useHackerNewsApi';
 import useDataApi from './hooks/useDataApi';
 import './App.css';
 
