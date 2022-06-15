@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import useHackerNewsApi from './hooks/useHackerNewsApi';
+import useDataApi from './hooks/useDataApi';
 import './App.css';
 
 function App() {
   const [query, setQuery] = useState('redux');
-  const [{ data, isLoading, isError }, doFetch] = useHackerNewsApi();
+  const [{ data, isLoading, isError }, doFetch] = useDataApi(
+    'https://hn.algolia.com/api/v1/search?query=redux',
+    { hits: [] }
+  );
 
   return (
     <div className="App">
