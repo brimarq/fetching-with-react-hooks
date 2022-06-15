@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# How to fetch data with React Hooks
+
+Project based upon [this tutorial](https://www.robinwieruch.de/react-hooks-fetch-data/).
+
+---
+
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
