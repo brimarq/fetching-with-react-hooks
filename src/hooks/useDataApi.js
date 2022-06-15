@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useHackerNewsApi = (initialUrl, initialData) => {
+const useDataApi = (initialUrl, initialData) => {
   const [data, setData] = useState(initialData);
   const [url, setUrl] = useState(initialUrl);
   const [isLoading, setIsLoading] = useState(false);
@@ -28,4 +28,4 @@ const useHackerNewsApi = (initialUrl, initialData) => {
   return [{ data, isLoading, isError }, setUrl];
 };
 
-export default useHackerNewsApi;
+export default useDataApi;
