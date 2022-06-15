@@ -35,18 +35,31 @@ const useDataApi = (initialUrl, initialData) => {
   });
 
   useEffect(() => {
+    let didCancel = false;
+
     const fetchData = async () => {
       dispatch({ type: 'FETCH_INIT' });
       try {
         const response = await fetch(url);
         const result = await response.json();
-        dispatch({ type: 'FETCH_SUCCESS', payload: result });
+        if (!didCancel) {
+          dispatch({ type: 'FETCH_SUCCESS', payload: result });
+        }
       } catch (error) {
-        dispatch({ type: 'FETCH_FAILURE' });
+        if (!didCancel) {
+          dispatch({ type: 'FETCH_FAILURE' });
+        }
       }
     };
 
     fetchData();
+
+    // Every effect hook can return a cleanup fn that runs on unmount.
+    // This one sets the didCancel flag to prevent dispatch/state change
+    // in case of unintentional premature unmounting.
+    return () => {
+      didCancel = true;
+    };
   }, [url]);
 
   return [state, setUrl];
