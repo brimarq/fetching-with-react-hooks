@@ -31,19 +31,19 @@ function App() {
 
   return (
     <div className="App">
-      <input
-        type="text"
-        value={query}
-        onChange={event => setQuery(event.target.value)}
-      />
-      <button
-        type="button"
-        onClick={() =>
-          setUrl(`https://hn.algolia.com/api/v1/search?query=${query}`)
-        }
+      <form
+        onSubmit={event => {
+          event.preventDefault();
+          setUrl(`https://hn.algolia.com/api/v1/search?query=${query}`);
+        }}
       >
-        Search
-      </button>
+        <input
+          type="text"
+          value={query}
+          onChange={event => setQuery(event.target.value)}
+        />
+        <button type="submit">Search</button>
+      </form>
 
       {isError && <div>Something went wrong...</div>}
 
